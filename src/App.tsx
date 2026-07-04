@@ -1,7 +1,4 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+
 
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -47,7 +44,7 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen relative overflow-hidden bg-gradient-to-b ${activeTheme.bgGradient} transition-colors duration-1000`}
+      className={`min-h-screen relative overflow-hidden bg-linear-to-b ${activeTheme.bgGradient} transition-colors duration-1000`}
     >
       {/* Decorative dynamic ambient background mesh overlay */}
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/80 pointer-events-none mix-blend-multiply z-0" />

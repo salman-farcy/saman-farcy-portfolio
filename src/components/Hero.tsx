@@ -1,13 +1,12 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+
 
 import React, { useState, useEffect } from "react";
-import { Download, Github, Linkedin, Twitter, Facebook, ArrowRight, CheckCircle2, ArrowUpRight, Terminal, Cpu, Sparkles, Activity, Check } from "lucide-react";
+import { Download, Youtube, Github, Linkedin, Twitter, Facebook, ArrowRight, CheckCircle2, ArrowUpRight, Terminal, Cpu, Sparkles, Activity, Check } from "lucide-react";
 import { PORTFOLIO_OWNER } from "../data";
 import { ThemePreset } from "../types";
 import Typewriter from "./Typewriter";
+import ResumeDownloadButton from "./common/ResumeDownloadButton";
+
 
 interface HeroProps {
   activeTheme: ThemePreset;
@@ -39,37 +38,6 @@ export default function Hero({ activeTheme }: HeroProps) {
       setDownloading(false);
       setDownloadComplete(true);
       
-      // Trigger a mock file download of a beautifully structured markdown/text resume or simple placeholder
-      const element = document.createElement("a");
-      const file = new Blob([
-        `=========================================
-SALMAN FARZY - RESUME
-Full Stack Developer & UI/UX Craftsman
-=========================================
-Email: ${PORTFOLIO_OWNER.email}
-Phone: ${PORTFOLIO_OWNER.phone}
-Website: https://salmanfarcy.github.io
-
-EXPERIENCE:
-- Senior Full Stack Intern / Associate at Apex Digital Solutions
-- Freelance UI Developer & Open-Source Contributor
-
-EDUCATION:
-- B.Sc. in Computer Science & Engineering (DIU) | CGPA: 3.85
-- Higher Secondary Certificate (DCC) | GPA: 5.00
-
-CORE TECH STACK:
-- React, Next.js, TypeScript, Tailwind CSS, Motion
-- Node.js, Express, PostgreSQL, Firebase, REST APIs, D3.js
-
-Generated dynamically from portfolio interactive portal. Thank you for visiting!
-`
-      ], { type: 'text/plain' });
-      element.href = URL.createObjectURL(file);
-      element.download = "Salman_Farzy_Resume.txt";
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
 
       // Reset complete notification after 4 seconds
       setTimeout(() => {
@@ -80,9 +48,9 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
 
   const handleExploreClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const aboutSection = document.querySelector("#about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    const projectsSection = document.querySelector("#projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -123,8 +91,8 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-black leading-[0.95] tracking-tighter text-white min-h-[6.5rem] sm:min-h-[9rem] md:min-h-[11rem] lg:min-h-[11.5rem]">
                 <Typewriter 
                   text="FULL-STACK" 
-                  delay={200} 
-                  speed={70} 
+                  delay={100} 
+                  speed={80} 
                   onComplete={() => setHeadingOneComplete(true)} 
                   cursorColor={activeTheme.accent}
                 />
@@ -133,7 +101,7 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
                   <span className="bg-gradient-to-r bg-clip-text text-transparent inline-block cursor-default" style={{ backgroundImage: `linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.accent})` }}>
                     <Typewriter 
                       text="DEVELOPER." 
-                      speed={80} 
+                      speed={60} 
                       onComplete={() => setHeadingTwoComplete(true)} 
                       cursorColor={activeTheme.primary}
                     />
@@ -147,12 +115,12 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
                     <span style={{ color: activeTheme.accent }} className="font-semibold">
                       <Typewriter 
                         texts={[
-                          "Full Stack Developer",
+                          "Full Stack Developer.",
                           "UI/UX Craftsman",
                           "Creative Thinker",
                           "React & Node Specialist"
                         ]} 
-                        speed={40} 
+                        speed={30} 
                         deleteSpeed={25}
                         pauseDelay={2200}
                         loop={true}
@@ -172,32 +140,9 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
 
             {/* Resume Button & Explore CTA */}
             <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 transition-all duration-700 delay-200 ${headingTwoComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
-              <button
-                onClick={handleDownload}
-                disabled={downloading}
-                className="w-full sm:w-auto relative group flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-medium text-black text-sm transition-all duration-300 active:scale-95 disabled:opacity-80"
-                style={{
-                  background: `linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.accent})`,
-                  boxShadow: `0 4px 20px -5px ${activeTheme.primary}`
-                }}
-              >
-                {downloading ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                    <span>Preparing PDF...</span>
-                  </>
-                ) : downloadComplete ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4 text-black" />
-                    <span>Downloaded Successfully!</span>
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-4 h-4 text-black group-hover:translate-y-0.5 transition-transform" />
-                    <span>Download Resume</span>
-                  </>
-                )}
-              </button>
+              {/* Resume Downlode Button */}
+              <ResumeDownloadButton activeTheme={activeTheme} downloadComplete={downloadComplete} downloading={downloading} handleDownload={handleDownload} />
+              
 
               <button
                 onClick={handleExploreClick}
@@ -214,6 +159,7 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
               {[
                 { icon: Github, link: PORTFOLIO_OWNER.socials.github, label: "GitHub" },
                 { icon: Linkedin, link: PORTFOLIO_OWNER.socials.linkedin, label: "LinkedIn" },
+                { icon: Youtube, link: PORTFOLIO_OWNER.socials.youtube, label: "Youtube" },
                 { icon: Twitter, link: PORTFOLIO_OWNER.socials.twitter, label: "Twitter" },
                 { icon: Facebook, link: PORTFOLIO_OWNER.socials.facebook, label: "Facebook" }
               ].map((soc, i) => {
@@ -266,7 +212,7 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
               })}
             </div>
 
-            <div className="relative group max-w-[320px] sm:max-w-[360px] w-full aspect-square">
+            <div className="relative group max-w-[320px] sm:max-w-2xl w-full aspect-square">
               {/* Outer decorative neon spinning glowing border */}
               <div
                 className="absolute inset-0 rounded-3xl opacity-50 blur-xl group-hover:opacity-75 transition-opacity duration-500"
@@ -275,14 +221,14 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
                 }}
               />
               <div
-                className="absolute -inset-1.5 rounded-[2rem] opacity-30 group-hover:opacity-60 transition-all duration-500"
+                className="absolute -inset-1.5 rounded-2xl opacity-30 group-hover:opacity-60 transition-all duration-500"
                 style={{
                   background: `linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.accent})`
                 }}
               />
 
               {/* Central container */}
-              <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-950/40 backdrop-blur-md flex flex-col justify-between">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden border border-white/10 bg-zinc-950/40 backdrop-blur-md flex flex-col justify-between">
                 
                 {/* Cyber HUD Corner Brackets */}
                 <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 opacity-60 pointer-events-none group-hover:opacity-100 transition-opacity" style={{ borderColor: activeTheme.accent }} />
@@ -321,7 +267,7 @@ Generated dynamically from portfolio interactive portal. Thank you for visiting!
                     {/* Glassmorphic floating card in photo */}
                     <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md flex items-center justify-between text-xs">
                       <div>
-                        <div className="font-semibold text-white font-display">Salman Farzy</div>
+                        <div className="font-semibold text-white font-display">{PORTFOLIO_OWNER.name}</div>
                         <div className="text-[10px] text-zinc-400 font-mono">Located: Dhaka, BD</div>
                       </div>
                       <div

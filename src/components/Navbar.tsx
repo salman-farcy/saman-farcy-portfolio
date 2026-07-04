@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState, useEffect } from "react";
 import { Menu, X, Settings, Sparkles, Check } from "lucide-react";
 import { THEME_PRESETS } from "../data";
@@ -29,10 +24,10 @@ export default function Navbar({ activeTheme, onThemeChange }: NavbarProps) {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Sandbox", href: "#architecture-sandbox" },
+    // { name: "Sandbox", href: "#architecture-sandbox" },
     { name: "Skills", href: "#skills" },
-    { name: "Journey", href: "#journey" },
     { name: "Projects", href: "#projects" },
+    { name: "Journey", href: "#journey" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -50,7 +45,7 @@ export default function Navbar({ activeTheme, onThemeChange }: NavbarProps) {
       id="navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? `${activeTheme.glassBg} ${activeTheme.glassBorder} border-b backdrop-blur-md py-4 shadow-lg`
+          ? `${activeTheme.glassBg} ${activeTheme.glassBorder} backdrop-blur-md py-4 shadow-lg`
           : "bg-transparent py-6"
       }`}
     >
@@ -63,15 +58,16 @@ export default function Navbar({ activeTheme, onThemeChange }: NavbarProps) {
             className="flex items-center gap-2 font-display text-xl sm:text-2xl font-bold text-white tracking-wider group"
           >
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:rotate-12"
+              className="w-8 lg:w-12 h-8 lg:h-12 rounded-lg flex items-center justify-center transition-transform group-hover:rotate-20"
               style={{
                 background: `linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.accent})`
               }}
             >
-              <Sparkles className="w-4 h-4 text-black font-bold" />
+              {/* <Sparkles className="w-4 h-4 text-black font-bold" /> */}
+              <span>SF</span>
             </div>
             <span>
-              SALMAN<span style={{ color: activeTheme.accent }}>.</span>F
+              SALMAN <span style={{ color: activeTheme.accent }}>FARCY</span>
             </span>
           </a>
 

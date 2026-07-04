@@ -158,7 +158,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
     if (saved) {
       try {
         currentSaved = JSON.parse(saved);
-      } catch (err) {}
+      } catch (err) { }
     }
     const currentProjSaved = currentSaved[projectId] || [];
     const updatedProjSaved = [newReview, ...currentProjSaved];
@@ -211,10 +211,10 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
   // Filter projects based on query and selected filter tag
   const filteredProjects = PROJECTS_DATA.filter((project) => {
-    const matchesSearch = project.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          project.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          project.techStack.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+    const matchesSearch = project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.techStack.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
     if (activeFilter === "all") return matchesSearch;
     const matchesFilter = project.techStack.some(t => t.toLowerCase() === activeFilter.toLowerCase());
     return matchesSearch && matchesFilter;
@@ -229,7 +229,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Heading & Controls Row */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
           <div className="text-center md:text-left">
@@ -262,7 +262,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                 </button>
               )}
             </div>
-            
+
             {/* Tag Filter Pills */}
             <div className="flex flex-wrap gap-1.5">
               {allTags.map((tag) => (
@@ -289,7 +289,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
             {filteredProjects.map((project) => {
               const currentCoord = coords[project.id] || { x: 0, y: 0 };
               const isLiked = likedProjects[project.id] || false;
-              
+
               return (
                 <div
                   key={project.id}
@@ -317,7 +317,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    
+
                     {/* Visual Glassmorphic Hover Overlay */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
                       <div className="flex flex-col items-center gap-3">
@@ -337,7 +337,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
                     {/* Floating Corner Metrics */}
                     <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-md">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[8px] font-mono uppercase tracking-widest text-zinc-300">Production Ready</span>
                     </div>
 
@@ -346,8 +346,8 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                       onClick={(e) => handleLike(project.id, e)}
                       className="absolute top-3 right-3 z-20 p-2 rounded-full bg-black/60 border border-white/10 text-zinc-400 hover:text-white transition-all active:scale-90"
                     >
-                      <Heart 
-                        className={`w-3.5 h-3.5 transition-colors ${isLiked ? "fill-rose-500 text-rose-500" : "text-zinc-400"}`} 
+                      <Heart
+                        className={`w-3.5 h-3.5 transition-colors ${isLiked ? "fill-rose-500 text-rose-500" : "text-zinc-400"}`}
                       />
                     </button>
                   </div>
@@ -391,9 +391,9 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                         <Heart className="w-3 h-3 text-rose-500/80 fill-rose-500/20" />
                         <span>{projectLikes[project.id]} Upvotes</span>
                       </div>
-                      
+
                       <div className="flex items-center gap-1 text-xs font-mono font-semibold text-zinc-400 group-hover:text-white transition-colors">
-                        <span>Details</span>
+                        <span>Overview</span>
                         <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style={{ color: activeTheme.accent }} />
                       </div>
                     </div>
@@ -413,7 +413,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
         {/* Dynamic Project Details Modal Overlay */}
         {selectedProject && (
-          <div className="fixed inset-0 z-[99999] flex items-start sm:items-center justify-center p-4 pt-20 sm:p-6 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-99999 flex items-start sm:items-center justify-center p-4 pt-20 sm:p-6 bg-black/80 backdrop-blur-md">
             {/* Modal Closer Mask */}
             <div
               className="absolute inset-0"
@@ -422,30 +422,42 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
             {/* Modal Card */}
             <div
-              className="relative w-full max-w-2xl rounded-3xl border shadow-2xl overflow-hidden backdrop-blur-2xl max-h-[85vh] sm:max-h-[90vh] mt-2 sm:mt-0 z-10 flex flex-col"
+              className="relative w-full max-w-4xl rounded-xl md:rounded-3xl border shadow-2xl overflow-hidden backdrop-blur-2xl max-h-[85vh] sm:max-h-[90vh] mt-2 sm:mt-0 z-10 flex flex-col"
               style={{
                 backgroundColor: "rgba(13, 7, 24, 0.98)",
                 borderColor: "rgba(255, 255, 255, 0.1)"
               }}
             >
+              {/* Project Detail Button  */}
+              <button
+                onClick={(e) => handleLike(selectedProject.id, e)}
+                className={`absolute top-4 right-34 z-20 flex font-mono text-[15px] items-center gap-1 px-4 py-1 rounded-full bg-black/60 hover:bg-black/80 border transition-all cursor-pointer ${likedProjects[selectedProject.id]
+                  ? "border-pink-500/50 text-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.3)] scale-105"
+                  : "border-white/10 text-zinc-400 hover:text-pink-400"
+                  }`}
+                aria-label="Project Detail"
+              >
+                Detail
+              </button>
+
+
               {/* Love React button next to close button */}
               <button
                 onClick={(e) => handleLike(selectedProject.id, e)}
-                className={`absolute top-4 right-16 z-20 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-black/60 hover:bg-black/80 border transition-all cursor-pointer ${
-                  likedProjects[selectedProject.id] 
-                    ? "border-pink-500/50 text-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.3)] scale-105" 
-                    : "border-white/10 text-zinc-400 hover:text-pink-400"
-                }`}
+                className={`absolute top-4 right-16 z-20 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-black/60 hover:bg-black/80 border transition-all cursor-pointer ${likedProjects[selectedProject.id]
+                  ? "border-pink-500/50 text-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.3)] scale-105"
+                  : "border-white/10 text-zinc-400 hover:text-pink-400"
+                  }`}
                 aria-label="Love this project"
               >
-                <Heart className={`w-3.5 h-3.5 transition-transform active:scale-125 ${likedProjects[selectedProject.id] ? "fill-pink-500 text-pink-500" : ""}`} />
+                <Heart className={`w-4 h-4.5 transition-transform active:scale-125 ${likedProjects[selectedProject.id] ? "fill-pink-500 text-pink-500" : ""}`} />
                 <span className="text-[10px] font-mono font-bold leading-none">{projectLikes[selectedProject.id] || 0}</span>
               </button>
 
               {/* Header Close button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 hover:bg-black/80 border border-white/10 text-zinc-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 hover:bg-black/80 border border-white/15 text-zinc-400 hover:text-white hover:border-pink-500/50 transition-colors"
                 aria-label="Close details"
               >
                 <X className="w-3.5 h-3.5" />
@@ -455,10 +467,10 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
               <div className="flex-1 overflow-y-auto project-modal-scrollbar select-text">
                 {/* Image banner & Dynamic Slider */}
                 {(() => {
-                  const projectImages = selectedProject.images && selectedProject.images.length > 0 
-                    ? selectedProject.images 
+                  const projectImages = selectedProject.images && selectedProject.images.length > 0
+                    ? selectedProject.images
                     : [selectedProject.image];
-                  
+
                   const prevSlide = (e: React.MouseEvent) => {
                     e.stopPropagation();
                     setCurrentImageIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1));
@@ -479,24 +491,23 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                             src={imgSrc}
                             alt={`${selectedProject.name} screenshot ${idx + 1}`}
                             referrerPolicy="no-referrer"
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-                              currentImageIndex === idx ? "opacity-100 z-0 scale-100" : "opacity-0 pointer-events-none scale-105"
-                            }`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${currentImageIndex === idx ? "opacity-100 z-0 scale-100" : "opacity-0 pointer-events-none scale-105"
+                              }`}
                           />
                         ))}
                       </div>
 
                       {/* Gradient Overlays */}
-                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
-                      <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
-                      
+                      <div className="absolute inset-x-0 bottom-0 h-2/4 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
+                      <div className="absolute inset-x-0 top-0 h-1/4 bg-linear-to-b from-black/50 to-transparent pointer-events-none" />
+
                       {/* Left and Right Arrow Navigation Controls (Positioned separately side-by-side on the bottom right) */}
                       {projectImages.length > 1 && (
-                        <div className="absolute bottom-4 right-6 z-20 flex items-center gap-1.5">
+                        <div className="absolute bottom-4 right-6 z-15 flex items-center gap-2">
                           <button
                             type="button"
                             onClick={prevSlide}
-                            className="flex items-center justify-center p-2 rounded-full bg-black/60 hover:bg-black/85 border border-white/10 text-white/80 hover:text-white transition-all active:scale-90 select-none cursor-pointer backdrop-blur-md"
+                            className="flex items-center justify-center p-2 rounded-full bg-black/60 hover:bg-black/85 border border-white/10 text-white/80 hover:border-pink-500/50 hover:text-white transition-all active:scale-90 select-none cursor-pointer backdrop-blur-md"
                             aria-label="Previous slide"
                           >
                             <ChevronLeft className="w-3.5 h-3.5" />
@@ -505,7 +516,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                           <button
                             type="button"
                             onClick={nextSlide}
-                            className="flex items-center justify-center p-2 rounded-full bg-black/60 hover:bg-black/85 border border-white/10 text-white/80 hover:text-white transition-all active:scale-90 select-none cursor-pointer backdrop-blur-md"
+                            className="flex items-center justify-center p-2 rounded-full bg-black/60 hover:bg-black/85 border border-white/10 text-white/80 hover:border-pink-500/50 hover:text-white transition-all active:scale-90 select-none cursor-pointer backdrop-blur-md"
                             aria-label="Next slide"
                           >
                             <ChevronRight className="w-3.5 h-3.5" />
@@ -524,9 +535,8 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                                 e.stopPropagation();
                                 setCurrentImageIndex(i);
                               }}
-                              className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${
-                                currentImageIndex === i ? "bg-purple-400 w-3.5" : "bg-white/40 hover:bg-white/60"
-                              }`}
+                              className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${currentImageIndex === i ? "bg-purple-400 w-3.5" : "bg-white/40 hover:bg-white/60"
+                                }`}
                               aria-label={`Go to slide ${i + 1}`}
                             />
                           ))}
@@ -535,7 +545,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
                       {/* Title badge overlay */}
                       <div className="absolute bottom-4 left-6 z-10 max-w-[calc(100%-110px)] sm:max-w-[calc(100%-140px)]">
-                        <span className="text-[10px] font-mono uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-purple-950/80 border border-purple-500/30 text-purple-300 mb-1 inline-block">
+                        <span className="text-[10px] font-mono uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-purple-950/80 border border-purple-500/30 text-purple-300 mb-1 hidden sm:inline-block">
                           Project Detail • Slide {currentImageIndex + 1} of {projectImages.length}
                         </span>
                         <h3 className="font-display text-xl sm:text-2xl font-bold text-white drop-shadow-md leading-tight">
@@ -548,7 +558,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
                 {/* Detail Content */}
                 <div className="p-6 sm:p-8 space-y-6">
-                  
+
                   {/* Technology Stack block */}
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-zinc-400 font-mono text-xs uppercase tracking-wider">
@@ -634,7 +644,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                   </a>
 
                   {/* Interactive Project Feedback Trigger Button */}
-                  <div 
+                  <div
                     className="flex-1 relative"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -655,7 +665,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
 
                     {/* Floating Hover Project Feedback Popup Card */}
                     {showFeedbackPopup && (
-                      <div 
+                      <div
                         className="feedback-form-container absolute bottom-full left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-0 mb-4 w-[280px] sm:w-[380px] p-5 rounded-2xl border shadow-2xl z-50 bg-zinc-950 border-white/10 backdrop-blur-xl animate-slide-up flex flex-col space-y-4 max-h-[350px] overflow-y-auto project-modal-scrollbar"
                         style={{
                           boxShadow: "0 20px 50px -10px rgba(0,0,0,0.9), 0 0 1px 2px rgba(255,255,255,0.05)"
@@ -669,7 +679,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                             <Smile className="w-3.5 h-3.5 text-purple-400" />
                             <span>Feedback on {selectedProject.name}</span>
                           </span>
-                          
+
                           {/* Interactive Stars */}
                           <div className="flex gap-1">
                             {[1, 2, 3, 4, 5].map((starVal) => {
@@ -683,10 +693,9 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                                   onClick={() => setProjFeedbackRating(starVal)}
                                   className="p-0.5 transition-transform active:scale-75 cursor-pointer"
                                 >
-                                  <Star 
-                                    className={`w-3.5 h-3.5 sm:w-4 h-4 transition-all duration-150 ${
-                                      isLit ? "fill-yellow-400 text-yellow-400 scale-110 drop-shadow-[0_0_6px_rgba(250,204,21,0.4)]" : "text-zinc-600 hover:text-zinc-400"
-                                    }`} 
+                                  <Star
+                                    className={`w-3.5 h-3.5 sm:w-4 h-4 transition-all duration-150 ${isLit ? "fill-yellow-400 text-yellow-400 scale-110 drop-shadow-[0_0_6px_rgba(250,204,21,0.4)]" : "text-zinc-600 hover:text-zinc-400"
+                                      }`}
                                   />
                                 </button>
                               );
@@ -700,7 +709,7 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                           </div>
                         ) : (
                           <form onSubmit={(e) => handleProjFeedbackSubmit(selectedProject.id, e)} className="space-y-3">
-                            
+
                             {/* Project Relevant Quick Tags Select */}
                             <div className="space-y-1">
                               <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block">Select Quick Audit Tag:</span>
@@ -712,11 +721,10 @@ export default function ProjectsSection({ activeTheme }: ProjectsSectionProps) {
                                       key={tag}
                                       type="button"
                                       onClick={() => setProjFeedbackTag(tag)}
-                                      className={`px-1.5 py-0.5 rounded text-[9px] font-sans transition-all border ${
-                                        isSelected
-                                          ? "bg-purple-500/20 text-purple-200 border-purple-500/50 font-semibold"
-                                          : "bg-white/5 border-white/5 text-zinc-400 hover:text-zinc-200 hover:border-white/10"
-                                      }`}
+                                      className={`px-1.5 py-0.5 rounded text-[9px] font-sans transition-all border ${isSelected
+                                        ? "bg-purple-500/20 text-purple-200 border-purple-500/50 font-semibold"
+                                        : "bg-white/5 border-white/5 text-zinc-400 hover:text-zinc-200 hover:border-white/10"
+                                        }`}
                                     >
                                       {tag}
                                     </button>

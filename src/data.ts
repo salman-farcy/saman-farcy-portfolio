@@ -1,24 +1,21 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import { Project, SkillCategory, Education, Experience, ThemePreset } from "./types";
 
 export const PORTFOLIO_OWNER = {
-  name: "Salman Farzy",
+  name: "Salman Farcy",
   title: "Principal Systems Architect & Staff Engineer",
-  subTitle: "Over 10 years of experience designing ultra-scalable distributed systems, high-concurrency microservices, and immersive glassmorphic web platforms with advanced micro-animations.",
-  avatar: "/src/assets/images/professional_avatar_headshot_1783150551097.jpg",
+  subTitle: "Over 5 years of experience designing ultra-scalable distributed systems, high-concurrency microservices, and immersive glassmorphic web platforms with advanced micro-animations.",
+  avatar: "../src/assets/images/3.png",
   email: "salmanfarcy253@gmail.com",
-  phone: "+880 1712-345678",
-  whatsapp: "https://wa.me/8801712345678",
+  phone: "+880 1602695577",
+  whatsapp: "https://wa.me/8801602695577",
   resumeUrl: "#", // Clickable button (view & download mock action)
   socials: {
-    github: "https://github.com/salmanfarcy",
-    linkedin: "https://linkedin.com/in/salmanfarcy",
-    twitter: "https://twitter.com/salmanfarcy",
-    facebook: "https://facebook.com/salmanfarcy"
+    github: "https://github.com/salman-farcy",
+    linkedin: "https://www.linkedin.com/in/salman-farcy/",
+    youtube: "https://www.youtube.com/@CodeWithSalmanFarcy",
+    twitter: "https://x.com/salmanfarcyDev",
+    facebook: "https://www.facebook.com/salmanfarcy.253/"
   }
 };
 

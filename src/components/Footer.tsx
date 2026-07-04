@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { Sparkles, Github, Linkedin, Twitter, Facebook, Send, Smile, Info, Heart, MessageSquare } from "lucide-react";
+import { Sparkles, Github, Linkedin, Twitter, Facebook, Send, Smile, Info, Heart, MessageSquare, Youtube } from "lucide-react";
 import { ThemePreset } from "../types";
 import { PORTFOLIO_OWNER } from "../data";
 
@@ -267,6 +267,15 @@ export default function Footer({ activeTheme }: FooterProps) {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href={PORTFOLIO_OWNER.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-white/5 border border-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-all active:scale-90"
+                aria-label="LinkedIn"
+              >
+                <Youtube className="w-4 h-4" />
               </a>
               <a
                 href={PORTFOLIO_OWNER.socials.twitter}
