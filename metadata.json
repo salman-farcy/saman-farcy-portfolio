@@ -1,0 +1,6 @@
+{
+  "name": "Personal Portfolio",
+  "description": "An elegant, interactive personal portfolio website built with React, Tailwind CSS, and Motion, featuring a dark glassmorphic purple theme, modular bento grids, custom skills visualization, project showcase modals, and a contact form.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

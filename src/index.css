@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom styles for professional glassmorphism and purple particles */
+body {
+  font-family: var(--font-sans);
+  background-color: #0a0514;
+  color: #f3f4f6;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Glass classes matching the requested Bold Typography theme design */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.purple-glow {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #c084fc, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Webkit scrollbar for premium aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(13, 7, 20, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(192, 132, 252, 0.3);
+  border-radius: 9999px;
+  border: 2px solid rgba(13, 7, 20, 0.9);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 132, 252, 0.6);
+}
+
+/* Specific Custom Scrollbar Classes for Modals and Popups */
+.project-modal-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.project-modal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(13, 7, 20, 0.3);
+  border-radius: 9999px;
+}
+.project-modal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(192, 132, 252, 0.45);
+  border-radius: 9999px;
+}
+.project-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 132, 252, 0.75);
+}
+.project-modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(192, 132, 252, 0.45) rgba(13, 7, 20, 0.3);
+}
+
+.audit-feed-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.audit-feed-scrollbar::-webkit-scrollbar-track {
+  background: rgba(13, 7, 20, 0.2);
+  border-radius: 9999px;
+}
+.audit-feed-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.4);
+  border-radius: 9999px;
+}
+.audit-feed-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.75);
+}
+.audit-feed-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.4) rgba(13, 7, 20, 0.2);
+}
+
+/* Glassmorphism card utilities */
+.glass-card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  box-shadow: 0 10px 30px -10px rgba(192, 132, 252, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Subtle overlay grid effect */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(147, 51, 234, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(147, 51, 234, 0.04) 1px, transparent 1px);
+}
+
+/* Highlight / Selection color */
+::selection {
+  background-color: rgba(192, 132, 252, 0.3);
+  color: #ffffff;
+}
+
+/* Radar Sweep Laser effect for profile photo */
+@keyframes radar-sweep {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+/* Typing cursor blinking effect */
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+/* Premium Tooltip implementation styles */
+.tooltip-trigger {
+  position: relative;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 12px;
+  background: rgba(10, 5, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(139, 92, 246, 0.25);
+  z-index: 50;
+}
+
+.tooltip-trigger:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Glassmorphic border glow animation */
+.animated-glass-border {
+  position: relative;
+}
+
+.animated-glass-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02), rgba(139, 92, 246, 0.3), rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
