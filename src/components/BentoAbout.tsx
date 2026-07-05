@@ -1,17 +1,18 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import { Smile, Coffee, Clock, Heart, Code, Music, Play, Pause, Plus, Sparkles, MapPin, Terminal, ChevronRight, Command } from "lucide-react";
 import { ThemePreset } from "../types";
+import music from "@/src/assets/audio/background.mp3";
+import localTimeImage from "@/src/assets/images/localtime.png";
+
 
 interface BentoAboutProps {
   activeTheme: ThemePreset;
 }
 
 export default function BentoAbout({ activeTheme }: BentoAboutProps) {
+  const audioRef = useRef(null);
   const [cups, setCups] = useState(3);
   const [isPlaying, setIsPlaying] = useState(false);
   const [time, setTime] = useState("");
@@ -20,6 +21,16 @@ export default function BentoAbout({ activeTheme }: BentoAboutProps) {
   const [terminalOutput, setTerminalOutput] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
+  // Audio Mock Controls
+  const audioMockControls = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  }
+
   // Dhaka Local Time Tick (UTC +6)
   useEffect(() => {
     const updateTime = () => {
@@ -27,12 +38,12 @@ export default function BentoAbout({ activeTheme }: BentoAboutProps) {
       // Adjust to UTC+6 for Dhaka
       const utc = now.getTime() + now.getTimezoneOffset() * 60000;
       const dhakaTime = new Date(utc + 3600000 * 6);
-      
+
       const hours = String(dhakaTime.getHours()).padStart(2, "0");
       const minutes = String(dhakaTime.getMinutes()).padStart(2, "0");
       const seconds = String(dhakaTime.getSeconds()).padStart(2, "0");
       const ampm = dhakaTime.getHours() >= 12 ? "PM" : "AM";
-      
+
       setTime(`${hours}:${minutes}:${seconds} ${ampm}`);
     };
 
@@ -49,15 +60,15 @@ export default function BentoAbout({ activeTheme }: BentoAboutProps) {
 
   const COMMAND_CONTENTS: Record<string, string> = {
     profile: `## PROFILE.MD
-> Name: Salman Farzy
-> Role: Senior Full-Stack Developer
+> Name: Salman Farcy
+> Role: Full-Stack Developer
 > Focus: Web Apps, Scalable Server Engines, Interactive Frontends
 > Mission: Crafting digital artifacts with premium pixel-perfection and robust backend mechanics. No shortcuts, just pure structural craftsmanship.`,
     stats: `{
   "uptime": "99.99%",
   "projects_shipped": 24,
   "bugs_slayed": 842,
-  "coffee_conversion_ratio": "1 cup = 400 lines of robust code",
+  "coffee_conversion_ratio": "1 cup = 70 lines of robust code",
   "client_satisfaction": "100%",
   "current_location": "Dhaka, Bangladesh"
 }`,
@@ -79,7 +90,7 @@ Let's build something beautiful and high-performance.`,
     let index = 0;
     const fullText = COMMAND_CONTENTS[selectedCmd] || "";
     setTerminalOutput("");
-    
+
     const interval = setInterval(() => {
       setTerminalOutput((prev) => prev + fullText.charAt(index));
       index++;
@@ -99,9 +110,9 @@ Let's build something beautiful and high-performance.`,
         className="absolute top-1/3 right-10 w-80 h-80 rounded-full mix-blend-screen filter blur-[130px] opacity-10"
         style={{ backgroundColor: activeTheme.primary }}
       />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Heading */}
         <div className="text-center md:text-left mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tighter uppercase text-white">
@@ -109,39 +120,39 @@ Let's build something beautiful and high-performance.`,
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r mt-3 mx-auto md:mx-0 rounded-full" style={{ backgroundImage: `linear-gradient(to right, ${activeTheme.primary}, ${activeTheme.accent})` }} />
           <p className="text-zinc-400 text-sm mt-4 max-w-xl">
-            A glimpse into my universe — where logic meets absolute creativity.
+            I build fast, scalable, and user focused web applications with the MERN Stack. I'm committed to clean code, continuous growth, and delivering high-quality digital solutions.
           </p>
         </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
+
           {/* Card 1: My Coding Journey (Col span 2, row span 1) */}
-          <div className="md:col-span-2 p-6 sm:p-8 rounded-3xl border glass-card bg-white/5 relative overflow-hidden" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
+          <div className="md:col-span-2 p-4 sm:p-8 rounded-3xl border glass-card bg-white/5 relative overflow-hidden" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
             <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[80px] opacity-20" style={{ backgroundColor: activeTheme.primary }} />
-            
+
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2.5 rounded-xl bg-white/5 text-purple-300">
                 <Code className="w-5 h-5" style={{ color: activeTheme.accent }} />
               </div>
               <h3 className="font-display text-lg font-bold text-white">My Coding Journey</h3>
             </div>
-            
+
             <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
+              <p>My journey into web development began in 2022 with a curiosity about how modern websites are built. What started with learning HTML, CSS, and JavaScript quickly grew into a passion for creating responsive, interactive, and user friendly web experiences. Every project has strengthened my problem solving mindset and deepened my understanding of modern frontend development.</p>
+
               <p>
-                My programming odyssey ignited in 2019 when I typed my first <code className="px-1.5 py-0.5 rounded bg-white/15 font-mono text-xs text-white">console.log("Hello World")</code> on a stuttering dual-core laptop. Watching static text transform into interactive widgets felt like absolute wizardry. That thrill quickly evolved into a burning passion for web design.
+                Today, I focus primarily on building clean, scalable interfaces with React.js, Next.js, Tailwind CSS, and Bootstrap, while continuously expanding my fullstack knowledge through Node.js, Express.js, MongoDB, PostgreSQL, and Prisma. I enjoy transforming ideas into polished digital products that combine thoughtful design, performance, and accessibility.
               </p>
-              <p>
-                As a Computer Science graduate from <span className="text-white font-medium">Daffodil International University</span>, I spent years polishing my skills in full-stack engineering. I enjoy bridging the gap between high-fidelity visual UI layouts and high-performance server logic.
-              </p>
-              <p>
-                I thrive on creating clean, accessible components that prioritize user empathy. From micro-interactions and smooth scrolling timelines to sturdy database architectures, I dedicate myself to writing scalable code that end-users enjoy.
+
+              <p> 
+                I believe great software is more than writing code it's about creating experiences people genuinely enjoy using. As a lifelong learner, I'm always exploring new technologies, improving my craft, and building projects that prepare me for the next challenge in my web development journey.
               </p>
             </div>
           </div>
 
           {/* Card 2: Personal Stats/Vibe Player (Col span 1, row span 1) */}
-          <div className="p-6 rounded-3xl border glass-card bg-white/5 flex flex-col justify-between" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
+          <div className="p-4 sm:p-6 rounded-3xl border glass-card bg-white/5 flex flex-col justify-between" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -178,10 +189,12 @@ Let's build something beautiful and high-performance.`,
             </div>
 
             {/* Audio Mock Controls */}
+            <audio ref={audioRef} src={music} loop />
             <button
-              onClick={() => setIsPlaying(!isPlaying)}
+              onClick={() => audioMockControls()}
               className="mt-4 w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white text-xs font-mono transition-all flex items-center justify-center gap-2"
             >
+
               {isPlaying ? (
                 <>
                   <Pause className="w-3.5 h-3.5" />
@@ -197,7 +210,11 @@ Let's build something beautiful and high-performance.`,
           </div>
 
           {/* Card 3: Dhaka Clock Widget (Col span 1) */}
-          <div className="p-6 rounded-3xl border glass-card bg-white/5 flex flex-col justify-between" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
+          <div className="p-4 md:p-6 rounded-3xl border border-white glass-card bg-white/5 flex flex-col justify-between bg-cover bg-center bg-no-repeat" style={{
+              borderColor: "rgba(255,255,255,0.08)",
+              backgroundImage: `url(${localTimeImage})`,
+              backgroundSize: "150%",
+            }}>
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2.5 rounded-xl bg-white/5">
@@ -217,10 +234,11 @@ Let's build something beautiful and high-performance.`,
               </div>
             </div>
 
-            <div className="text-zinc-400 text-xs border-t border-white/5 pt-3 leading-relaxed">
+            <div className="text-zinc-400 text-xs border-t border-white/20 pt-3 leading-relaxed">
               No matter where you are situated in the world, I am always ready to coordinate and chat remotely.
             </div>
           </div>
+
 
           {/* Card 4: Beyond the Screen / Hobbies (Col span 1) */}
           <div className="p-6 rounded-3xl border glass-card bg-white/5 flex flex-col justify-between" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
@@ -299,7 +317,7 @@ Let's build something beautiful and high-performance.`,
           {/* Card 6: Interactive Terminal Console (Full width) */}
           <div className="lg:col-span-3 md:col-span-2 p-6 rounded-3xl border glass-card bg-zinc-950/40 relative overflow-hidden" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[100px] opacity-10" style={{ backgroundColor: activeTheme.accent }} />
-            
+
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-xl bg-white/5">
@@ -312,7 +330,7 @@ Let's build something beautiful and high-performance.`,
                   <p className="text-zinc-500 text-xs font-mono">Click files to query system state</p>
                 </div>
               </div>
-              
+
               {/* Terminal Tab switcher controls */}
               <div className="flex flex-wrap gap-2">
                 {[

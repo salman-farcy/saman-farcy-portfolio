@@ -79,6 +79,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     skills: [
       { name: "React 19", level: 95, iconName: "Code2", tooltip: "Concurrent rendering, transitions, state hook systems & core React fibers" },
       { name: "Next.js", level: 92, iconName: "Cloud", tooltip: "App Router dynamic rendering, server actions, layout structures & middleware routing" },
+      { name: "JavaScript", level: 92, iconName: "Cloud", tooltip: "App Router dynamic rendering, server actions, layout structures & middleware routing" },
       { name: "TypeScript", level: 90, iconName: "Shield", tooltip: "Strict type-safety, advanced utility typings & deep static code verification" },
       { name: "Tailwind CSS", level: 98, iconName: "Wind", tooltip: "Pristine styling grids, adaptive theme configurations & complex transitions" },
       { name: "Framer Motion", level: 92, iconName: "Sparkles", tooltip: "Custom fluid animations, orchestrations & physical exit transitions" },
@@ -113,53 +114,32 @@ export const SKILLS_DATA: SkillCategory[] = [
 
 export const EDUCATION_DATA: Education[] = [
   {
-    degree: "Master of Science in Computer Science & Engineering (Distributed Systems)",
-    institution: "Daffodil International University",
-    period: "2016 - 2018",
-    result: "CGPA: 3.92 / 4.00",
-    details: "Focus on cloud computing, advanced distributed filesystems, replication algorithms (Raft/Paxos), and database transaction design."
+    degree: "Higher Secondary Certificate (HSC) – Humanities",
+    institution: "Altazer Rahman Degree College, Bhola",
+    period: "2017 - 2019",
+    result: "GPA: 3.43 / 4.00",
+    details: "Studied Humanities with Social Science subjects, building a foundation in analytical thinking and communication."
   },
   {
-    degree: "Bachelor of Science in Computer Science & Engineering (CSE)",
-    institution: "Daffodil International University",
-    period: "2012 - 2016",
-    result: "CGPA: 3.89 / 4.00",
-    details: "Led the ACM competitive programming chapter, developed core custom WebGL renderer modules, and completed comprehensive studies in data structures & OS design."
+    degree: "Secondary School Certificate (SSC) – Science",
+    institution: "Bosila High School, Dhaka",
+    period: "2015 - 2016",
+    result: "GPA: 3.22 / 5.00",
+    details: "Completed Secondary School education in the Science group, building a strong foundation in mathematics, physics, chemistry, and analytical problem-solving."
   }
 ];
 
 export const EXPERIENCE_DATA: Experience[] = [
   {
-    role: "Principal Systems Architect & Technical Director",
-    company: "Apex Enterprise Solutions",
-    period: "Mar 2021 - Present",
-    location: "Dhaka, Bangladesh (Hybrid)",
+    role: "Frontend Web Developer",
+    company: "Independent Learning & Personal Projects",
+    period: "2022 - Present",
+    location: "Dhaka, Bangladesh",
     details: [
-      "Engineered a ultra-high scale message-passing bus handles over 250,000 requests per second with sub-10ms distribution latency under peak load.",
-      "Pioneered the transition from a monolithic architecture to 45+ sharded, isolated microservices, reducing cloud computing overheads by 38% ($450k/year saved).",
-      "Created highly modular glassmorphic component libraries and micro-frontend structures used across 12 distinct international client products.",
-      "Mentored and led 25+ senior and staff level developers in modern engineering practices, React architecture, and low-latency database queries."
-    ]
-  },
-  {
-    role: "Senior Staff Software Engineer / Tech Lead",
-    company: "Stellar Cloud Scale Labs",
-    period: "Jan 2017 - Feb 2021",
-    location: "Dhaka, Bangladesh & Remote",
-    details: [
-      "Designed and deployed a server-authoritative websocket engine and synchronization system supporting 1.2M monthly active concurrent collaborative users.",
-      "Optimized query planners and implemented advanced PostgreSQL indexing, caching layers with cluster Redis, improving database response times by over 300%.",
-      "Contributed high-quality UI widgets and custom renderers to prominent open-source libraries, garnering 2,500+ stars from the GitHub community."
-    ]
-  },
-  {
-    role: "Lead Full Stack Developer",
-    company: "GitHub Contributor & Upwork Enterprise",
-    period: "Jun 2014 - Dec 2016",
-    location: "Remote / London, UK",
-    details: [
-      "Consulted with Fortune 500 companies to audit front-end performance, resolving complex rendering lag bottlenecks on high-density displays (Retina/DPI).",
-      "Engineered custom local-first state persistence caching algorithms saving up to 85% mobile telemetry network costs for off-grid operations."
+      "Building modern, responsive, and high-performance web applications using HTML, CSS, JavaScript, React.js, Next.js, Tailwind CSS, and Bootstrap.",
+      "Developed multiple real-world projects with a strong focus on clean UI, reusable component architecture, accessibility, and responsive user experiences.",
+      "Integrated RESTful APIs and gained hands-on experience with Node.js, Express.js, MongoDB, PostgreSQL, and Prisma while expanding full-stack development skills.",
+      "Continuously improving frontend engineering expertise by following industry best practices, optimizing application performance, and exploring modern web technologies."
     ]
   }
 ];

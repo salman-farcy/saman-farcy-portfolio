@@ -9,6 +9,8 @@ import {
   Cpu, GitBranch, Figma, Box, Cloud, Settings, Award, Heart, 
   CheckCircle2, ThumbsUp, Check, HelpCircle, X, ChevronRight, UserCheck 
 } from "lucide-react";
+
+
 import { SKILLS_DATA } from "../data";
 import { ThemePreset } from "../types";
 import { motion, AnimatePresence } from "motion/react";
@@ -401,6 +403,7 @@ export default function SkillsGrid({ activeTheme }: SkillsGridProps) {
                 </span>
               </div>
               <p className="text-[10px] font-mono text-zinc-400 mt-0.5">Proficiency: {skillMeta.level}%</p>
+              
             </div>
           </div>
 

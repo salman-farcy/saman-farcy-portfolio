@@ -22,7 +22,7 @@ export default function ExperienceEducation({ activeTheme }: ExperienceEducation
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center md:text-left mb-14">
           <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tighter uppercase text-white">
@@ -36,7 +36,7 @@ export default function ExperienceEducation({ activeTheme }: ExperienceEducation
 
         {/* Journey Timeline Split Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
+
           {/* Professional Experience Column */}
           <div className="space-y-6">
             <div className="flex items-center gap-3 pb-2 border-b border-white/5">
@@ -72,7 +72,7 @@ export default function ExperienceEducation({ activeTheme }: ExperienceEducation
                           {exp.company}
                         </p>
                       </div>
-                      
+
                       <div className="flex flex-col sm:items-end gap-1">
                         <span className="inline-flex items-center gap-1 text-[10px] font-mono text-zinc-400 bg-white/5 px-2 py-0.5 rounded border border-white/5">
                           <Calendar className="w-3 h-3" />

@@ -86,7 +86,7 @@ export default function Hero({ activeTheme }: HeroProps) {
             {/* Title / Designation */}
             <div className="space-y-4">
               <p className="text-xs font-mono uppercase tracking-widest" style={{ color: activeTheme.accent }}>
-                // Professional Portfolio
+                // Salman Farcy Portfolio
               </p>
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-black leading-[0.95] tracking-tighter text-white min-h-[6.5rem] sm:min-h-[9rem] md:min-h-[11rem] lg:min-h-[11.5rem]">
                 <Typewriter 
