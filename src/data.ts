@@ -2,6 +2,9 @@
 import { Project, SkillCategory, Education, Experience, ThemePreset } from "./types";
 
 import profileImage from "@/src/assets/images/avater.png";
+import projectOne from "@/src/assets/images/project-1.jpg";
+import projectTwo from "@/src/assets/images/project-2.jpg";
+import projectThree from "@/src/assets/images/project-3.jpg";
 
 
 
@@ -28,9 +31,9 @@ export const PROJECTS_DATA: Project[] = [
     id: "zenspace",
     name: "ZenSpace",
     tagline: "Breathing Meditation & Mindfulness Dashboard",
-    image: "/src/assets/images/project_zenspace_1783144521990.jpg",
+    image: projectOne,
     images: [
-      "/src/assets/images/project_zenspace_1783144521990.jpg",
+      projectOne,
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=80"
     ],
@@ -45,9 +48,9 @@ export const PROJECTS_DATA: Project[] = [
     id: "novashop",
     name: "NovaShop",
     tagline: "Ultra-Modern Glassmorphic Design Storefront",
-    image: "/src/assets/images/project_novashop_1783144534290.jpg",
+    image: projectTwo,
     images: [
-      "/src/assets/images/project_novashop_1783144534290.jpg",
+      projectTwo,
       "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
     ],
@@ -62,9 +65,9 @@ export const PROJECTS_DATA: Project[] = [
     id: "taskflow",
     name: "TaskFlow",
     tagline: "Collaborative Bento Grid Task Manager",
-    image: "/src/assets/images/project_taskflow_1783144547505.jpg",
+    image: projectThree,
     images: [
-      "/src/assets/images/project_taskflow_1783144547505.jpg",
+      projectThree,
       "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
     ],
