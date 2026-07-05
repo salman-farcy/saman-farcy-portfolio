@@ -18,7 +18,7 @@ export default function Hero({ activeTheme }: HeroProps) {
   const [photoMode, setPhotoMode] = useState<"photo" | "hud" | "ping">("photo");
   const [pingCount, setPingCount] = useState(0);
   const [isPinging, setIsPinging] = useState(false);
-  
+
   const [headingOneComplete, setHeadingOneComplete] = useState(false);
   const [headingTwoComplete, setHeadingTwoComplete] = useState(false);
   const [subheadingComplete, setSubheadingComplete] = useState(false);
@@ -32,12 +32,12 @@ export default function Hero({ activeTheme }: HeroProps) {
   const handleDownload = () => {
     if (downloading || downloadComplete) return;
     setDownloading(true);
-    
+
     // Simulate a beautiful modern resume download pipeline
     setTimeout(() => {
       setDownloading(false);
       setDownloadComplete(true);
-      
+
 
       // Reset complete notification after 4 seconds
       setTimeout(() => {
@@ -71,7 +71,7 @@ export default function Hero({ activeTheme }: HeroProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Intro Information */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-6 order-2 lg:order-1">
             {/* Status Indicator Pill */}
@@ -89,20 +89,20 @@ export default function Hero({ activeTheme }: HeroProps) {
                 // Salman Farcy Portfolio
               </p>
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-black leading-[0.95] tracking-tighter text-white min-h-[6.5rem] sm:min-h-[9rem] md:min-h-[11rem] lg:min-h-[11.5rem]">
-                <Typewriter 
-                  text="FULL-STACK" 
-                  delay={100} 
-                  speed={80} 
-                  onComplete={() => setHeadingOneComplete(true)} 
+                <Typewriter
+                  text="FULL-STACK"
+                  delay={100}
+                  speed={80}
+                  onComplete={() => setHeadingOneComplete(true)}
                   cursorColor={activeTheme.accent}
                 />
-                <br/>
+                <br />
                 {headingOneComplete && (
                   <span className="bg-gradient-to-r bg-clip-text text-transparent inline-block cursor-default" style={{ backgroundImage: `linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.accent})` }}>
-                    <Typewriter 
-                      text="DEVELOPER." 
-                      speed={60} 
-                      onComplete={() => setHeadingTwoComplete(true)} 
+                    <Typewriter
+                      text="DEVELOPER."
+                      speed={60}
+                      onComplete={() => setHeadingTwoComplete(true)}
                       cursorColor={activeTheme.primary}
                     />
                   </span>
@@ -113,14 +113,14 @@ export default function Hero({ activeTheme }: HeroProps) {
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-1.5">
                     <span>{PORTFOLIO_OWNER.name} •</span>
                     <span style={{ color: activeTheme.accent }} className="font-semibold">
-                      <Typewriter 
+                      <Typewriter
                         texts={[
                           "Full Stack Developer.",
                           "UI/UX Craftsman",
                           "Creative Thinker",
                           "React & Node Specialist"
-                        ]} 
-                        speed={30} 
+                        ]}
+                        speed={30}
                         deleteSpeed={25}
                         pauseDelay={2200}
                         loop={true}
@@ -142,7 +142,7 @@ export default function Hero({ activeTheme }: HeroProps) {
             <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 transition-all duration-700 delay-200 ${headingTwoComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
               {/* Resume Downlode Button */}
               <ResumeDownloadButton activeTheme={activeTheme} downloadComplete={downloadComplete} downloading={downloading} handleDownload={handleDownload} />
-              
+
 
               <button
                 onClick={handleExploreClick}
@@ -185,7 +185,7 @@ export default function Hero({ activeTheme }: HeroProps) {
 
           {/* Interactive Profile Photo frame / Bento Visual */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2 gap-4">
-            
+
             {/* Interactive Tab Switcher above the Avatar */}
             <div className="flex items-center gap-1 p-1 rounded-2xl bg-zinc-900/80 border border-white/5 backdrop-blur-md">
               {[
@@ -229,7 +229,7 @@ export default function Hero({ activeTheme }: HeroProps) {
 
               {/* Central container */}
               <div className="relative h-full w-full rounded-2xl overflow-hidden border border-white/10 bg-zinc-950/40 backdrop-blur-md flex flex-col justify-between">
-                
+
                 {/* Cyber HUD Corner Brackets */}
                 <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 opacity-60 pointer-events-none group-hover:opacity-100 transition-opacity" style={{ borderColor: activeTheme.accent }} />
                 <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 opacity-60 pointer-events-none group-hover:opacity-100 transition-opacity" style={{ borderColor: activeTheme.accent }} />
@@ -237,12 +237,12 @@ export default function Hero({ activeTheme }: HeroProps) {
                 <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 opacity-60 pointer-events-none group-hover:opacity-100 transition-opacity" style={{ borderColor: activeTheme.accent }} />
 
                 {/* Radar sweep laser animation line */}
-                <div 
-                  className="absolute left-0 right-0 h-[2px] opacity-20 pointer-events-none" 
-                  style={{ 
+                <div
+                  className="absolute left-0 right-0 h-[2px] opacity-20 pointer-events-none"
+                  style={{
                     background: `linear-gradient(to right, transparent, ${activeTheme.accent}, transparent)`,
                     animation: "radar-sweep 4s infinite linear"
-                  }} 
+                  }}
                 />
 
                 {/* Mode 1: Photo View */}
@@ -327,11 +327,11 @@ export default function Hero({ activeTheme }: HeroProps) {
                 {/* Mode 3: Ping Developer Interface */}
                 {photoMode === "ping" && (
                   <div className="p-6 h-full flex flex-col justify-between text-center relative overflow-hidden">
-                    
+
                     {/* Simulated Ripple Radar Ring if active */}
                     {isPinging && (
-                      <div 
-                        className="absolute inset-0 rounded-3xl animate-ping border-2 opacity-40 pointer-events-none" 
+                      <div
+                        className="absolute inset-0 rounded-3xl animate-ping border-2 opacity-40 pointer-events-none"
                         style={{ borderColor: activeTheme.accent }}
                       />
                     )}

@@ -1,11 +1,15 @@
 
 import { Project, SkillCategory, Education, Experience, ThemePreset } from "./types";
 
+import profileImage from "@/src/assets/images/avater.png";
+
+
+
 export const PORTFOLIO_OWNER = {
   name: "Salman Farcy",
   title: "Principal Systems Architect & Staff Engineer",
   subTitle: "Over 5 years of experience designing ultra-scalable distributed systems, high-concurrency microservices, and immersive glassmorphic web platforms with advanced micro-animations.",
-  avatar: "../src/assets/images/3.png",
+  avatar: profileImage,
   email: "salmanfarcy253@gmail.com",
   phone: "+880 1602695577",
   whatsapp: "https://wa.me/8801602695577",
